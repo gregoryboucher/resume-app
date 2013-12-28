@@ -1,0 +1,23 @@
+- import models.Menu
+- import services.MenuService
+- val test = MenuService.getMenuJson("header")
+
+- val navbar = List(Menu("About", "#about"), Menu("Contact", "#contact"), Menu("More", "#more"))
+
+-# TODO: Use service at /menu/:menuName.json to get header menu
+
+.navbar.navbar-fixed-top.navbar-inverse{:role => "navigation"}
+	.container
+		/ #{test}
+		.navbar-header
+			%button.navbar-toggle{:type => "button", "data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+				%span.sr-only Toggle navigation
+				%span.icon-bar
+				%span.icon-bar
+				%span.icon-bar
+			%a.navbar-brand{:href => "/"} Test Project
+		.navbar-collapse.collapse
+			%ul.nav.navbar-nav
+				- for (item <- navbar) 
+					%li 
+						%a{:href => {item.url}} = item.displayName

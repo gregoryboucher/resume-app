@@ -1,0 +1,10 @@
+- import models.Person
+- val people = List(Person("James", "Denver"), Person("Hiram", "Lakewood"), Person("Bob", "Lancaster"))
+%table
+	%tr
+		%th Name
+		%th Location
+	- for (person <- people) 
+		%tr
+			%td = person.name
+			%td = person.location
