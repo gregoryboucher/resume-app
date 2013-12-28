@@ -1,4 +1,4 @@
-package com.gregoryboucher.app
+package app
 
 import org.scalatra.test.specs2._
 
