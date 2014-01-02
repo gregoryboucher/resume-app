@@ -1,5 +1,6 @@
 *.class
 *.log
+.history
 
 # sbt specific
 dist/*
@@ -19,3 +20,4 @@ scripts/frameworks/
 
 #OS X
 .DS_Store
+
