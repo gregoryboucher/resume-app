@@ -3,13 +3,14 @@
 # Less::Rails is Copyright (c) 2011 Ken Collins, ken@metaskills.net and is distributed under the MIT license.
 
 bootstrap_git='./frameworks/twitter_git'
-base_dir='../src/main/webapp'
+webapp_dir='../src/main/webapp'
+scala_app_dir='../src/main/scala/app'
 
-base_js_dir="$base_dir/javascript"
+base_js_dir="$scala_app_dir/javascript"
 bootstrap_js_dir="$base_js_dir/twitter"
-base_styles_dir="$base_dir/less"
-bootstrap_styles_dir="$base_styles_dir/twitter"
-bootstrap_font_dir="$base_dir/css/fonts/twitter"
+base_styles_dir="$scala_app_dir/less"
+bootstrap_styles_dir="$base_styles_dir/_twitter"
+bootstrap_font_dir="$webapp_dir/css/fonts/twitter"
 
 
 error() {
@@ -37,7 +38,7 @@ if [ ! -d $bootstrap_git ]; then
     info "Bootstrap not found. Cloning to $bootstrap_git..."
     git clone git://github.com/twbs/bootstrap.git $bootstrap_git
 else
-    info "Bootstrap found. Fetching to $boot..."
+    info "Bootstrap found. Fetching to $bootstrap_git..."
     cd $bootstrap_git
     git fetch
     cd - > /dev/null
@@ -92,11 +93,11 @@ mv $bootstrap_styles_dir/bootstrap.less $base_styles_dir
 info "Sed to update fonts path in $bootstrap_styles_dir/variables.less..."
 sed "${ioption[@]}" 's#^\(@icon-font-path:[[:space:]]*\"\).*\(\";\)#\1\.\.\/fonts\/twitter/\2#g' $bootstrap_styles_dir/variables.less
 info "Sed to update less path in $base_styles_dir/bootstrap.less.."
-sed "${ioption[@]}" 's#^\(@import \"\)\([a-z\-]*\.less\"\)#\1twitter\/\2#g' $base_styles_dir/bootstrap.less
+sed "${ioption[@]}" 's#^\(@import \"\)\([a-z\-]*\.less\"\)#\1\_twitter\/\2#g' $base_styles_dir/bootstrap.less
 #sed "${ioption[@]}" 's# url(# asset-url(#g' $lrb_fw_dir/*.less
 
 info "Generate bootstrap.js..."
-sed -n "s#.*'js/\([a-z]\{1,\}\.js\)'.*#//= require twitter\/\1#p" $bootstrap_git/Gruntfile.js >> "$base_js_dir/bootstrap.js"
+sed -n "s#.*'js/\([a-z]\{1,\}\.js\)'.*#twitter\/\1#p" $bootstrap_git/Gruntfile.js >> "$base_js_dir/bootstrap.jsm"
 
 #info "Generate bootstrap.css.less..."
 #mkdir -p $lrb_styles_dir
