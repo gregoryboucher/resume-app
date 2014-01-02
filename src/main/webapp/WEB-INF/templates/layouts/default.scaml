@@ -20,7 +20,9 @@
 		- render("/layouts/navbar.scaml") 
 		.container
 			%header
-				%h1 #{headline}
+				%h1
+					#{headline}
+					%span.glyphicon.glyphicon-glass
 			%section
 				!= body
 			%footer #{zip}
@@ -28,3 +30,5 @@
 		%script{:type => "text/javascript",:src  => "https://code.jquery.com/jquery.js"}
 		/ Include all compiled plugins (below), or include individual files as needed
 		%script{:type => "text/javascript",:src  => "js/compiled/bootstrap.js"}
+		%script
+			$('a').tooltip()
