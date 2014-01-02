@@ -56,10 +56,12 @@ rm -rf $bootstrap_font_dir
 
 info "Remove $bootstrap_js_dir directory..."
 rm -rf $bootstrap_js_dir
-rm -f $base_js_dir/bootstrap.js
+info "Remove $base_js_dir/bootstrap.jsm..."
+rm -f $base_js_dir/bootstrap.jsm
 
 info "Remove $bootstrap_styles_dir directory..."
 rm -rf $bootstrap_styles_dir
+info "Remove $base_styles_dir/bootstrap.less..."
 rm -f $base_styles_dir/bootstrap.less
 
 
