@@ -13,6 +13,9 @@ project/plugins/project/
 .scala_dependencies
 
 #project specific
-webapp/js/compiled/
-webapp/css/compiled/
+compiled/
 scripts/frameworks/
+.lib/
+
+#OS X
+.DS_Store
