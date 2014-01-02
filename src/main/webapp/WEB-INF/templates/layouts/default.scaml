@@ -20,7 +20,10 @@
 		- render("/layouts/navbar.scaml") 
 		.container
 			%header
-				%h1 #{headline}
+				%h1
+					#{headline}
+					%span.glyphicon.glyphicon-glass
+
 			%section
 				!= body
 			%footer #{zip}
