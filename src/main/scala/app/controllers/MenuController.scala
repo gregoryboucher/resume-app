@@ -13,16 +13,16 @@ object MenuData {
    */
 	def getMenu(name: String): List[Menu] = name match {
 		case "footer" => List(
-			Menu("About", "#aboutFooter"),
-			Menu("Contact", "#contactFooter"),
-			Menu("More", "#moreFooter"))
+			Menu(0, "About", "#aboutFooter"),
+			Menu(1, "Contact", "#contactFooter"),
+			Menu(2, "More", "#moreFooter"))
 		case "sidebar" => List(
-			Menu("About", "#aboutSidebar"),
-			Menu("Contact", "#contactSidebar"),
-			Menu("More", "#moreSidebar"))
+			Menu(0, "About", "#aboutSidebar"),
+			Menu(1, "Contact", "#contactSidebar"),
+			Menu(2, "More", "#moreSidebar"))
 		case "header" | _ => List(
-			Menu("About", "#about"),
-			Menu("Contact", "#contact"),
-			Menu("More", "#more"))
+			Menu(0 ,"About", "#about"),
+			Menu(1, "Contact", "#contact"),
+			Menu(2, "More", "#more"))
 	}
 }
