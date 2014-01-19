@@ -61,9 +61,6 @@ rm -f $base_js_dir/bootstrap.jsm
 
 info "Remove $bootstrap_styles_dir directory..."
 rm -rf $bootstrap_styles_dir
-info "Remove $base_styles_dir/bootstrap.less..."
-rm -f $base_styles_dir/bootstrap.less
-
 
 
 info "Copying fonts to $bootstrap_font_dir..."
@@ -89,13 +86,12 @@ for f in $bootstrap_git/less/*.less; do
     bn=$(basename $f)
     cp $f $bootstrap_styles_dir/$bn
 done
-mv $bootstrap_styles_dir/bootstrap.less $base_styles_dir
 
 [[ $(uname -s) == 'Darwin' ]] && ioption=(-i "") || ioption=(-i)
 info "Sed to update fonts path in $bootstrap_styles_dir/variables.less..."
 sed "${ioption[@]}" 's#^\(@icon-font-path:[[:space:]]*\"\).*\(\";\)#\1\.\.\/fonts\/twitter/\2#g' $bootstrap_styles_dir/variables.less
-info "Sed to update less path in $base_styles_dir/bootstrap.less.."
-sed "${ioption[@]}" 's#^\(@import \"\)\([a-z\-]*\.less\"\)#\1\_twitter\/\2#g' $base_styles_dir/bootstrap.less
+#info "Sed to update less path in $base_styles_dir/bootstrap.less.."
+#sed "${ioption[@]}" 's#^\(@import \"\)\([a-z\-]*\.less\"\)#\1\_twitter\/\2#g' $base_styles_dir/bootstrap.less
 #sed "${ioption[@]}" 's# url(# asset-url(#g' $lrb_fw_dir/*.less
 
 info "Generate bootstrap.js..."
