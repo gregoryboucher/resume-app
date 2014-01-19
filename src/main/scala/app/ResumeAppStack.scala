@@ -7,8 +7,6 @@ import org.fusesource.scalate.layout.DefaultLayoutStrategy
 import javax.servlet.http.HttpServletRequest
 import collection.mutable
 import scala.collection.JavaConverters._
-import org.json4s.{DefaultFormats, Formats}
-import org.scalatra.json._
 
 trait ResumeAppStack extends ScalatraServlet with ScalateSupport {
   /* wire up the precompiled templates */

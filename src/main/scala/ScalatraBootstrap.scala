@@ -9,7 +9,10 @@ import javax.servlet.ServletContext
 class ScalatraBootstrap extends LifeCycle {
   override def init(context: ServletContext) {
         try {
-      context mount (new menuAppServletJson, "/menu")
+      context mount (new menuApiServletJson, "/menuapi")
+      context mount (new pageApiServletJson, "/pageapi")
+      context mount (new mapApiServletJson, "/mapapi")
+			
       context mount (new resumeAppServlet, "/")
     } catch {
       case e: Throwable => e.printStackTrace()
